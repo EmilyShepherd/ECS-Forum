@@ -20,6 +20,30 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->load->view('main');
+	}
+
+	public function user()
+	{
+		$this->load->model('User');
+
+		$query = $this->User->get_modules();
+
+		foreach ($query->result() as $row)
+		{
+			echo $row->name . '<br />';
+		}
+	}
+
+	public function module($id)
+	{
+		$this->load->model('Module');
+		$query = $this->Module->get_questions($id);
+
+		foreach ($query->result() as $row)
+		{
+			echo '<b>' . $row->title . '</b>' . '<br />';
+			echo '<p>' . $row->text . '</p>';
+		}
 	}
 }
