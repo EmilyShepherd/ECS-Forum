@@ -1,7 +1,9 @@
 
-html
+html, body
 {
-    font-family: Karla;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 #login_form
@@ -42,14 +44,45 @@ html
     height: 25px;
 }
 
+#login_error
+{
+    background: rgb(255, 160, 160);
+    border: 2px ridge red;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
 h1
 {
     margin: 9px;
 }
 
+#name
+{
+    display: inline-block;
+    float: right;
+    font-weight: bold;
+    position: relative;
+    bottom: 40px;
+    right: 10px;
+    font-size: 22px;
+}
+
+#pic
+{
+    float: right;
+    height: 55px;
+    position: relative;
+    bottom: 55px;
+}
+
 header
 {
     position: fixed;
+    z-index: 10;
     top: 0;
     left: 0;
     right: 0;
@@ -58,22 +91,121 @@ header
     box-shadow: black 0 0px 21px 0px;
 }
 
-main
+#main, #sidebar
 {
+    padding: 10px;
     padding-top: 60px;
+    box-sizing: border-box;
 }
 
-.row
+#main
+{
+    margin-left: 200px;
+}
+
+#main .row, #sidebar:not(.sidebar) .row
 {
     background: linear-gradient(to bottom, #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%);
-    height: 60px;
     border-radius: 10px;
     border: 2px ridge #c8d7dc;
-    padding: 10px;
     margin-top: 10px;
+    padding: 10px;
 }
 
 .row h3
 {
     margin: 0;
+}
+
+#sidebar
+{
+    transition: width 1s;
+    -webkit-transition: width 1s;
+    width: 100%;
+}
+
+#sidebar .row
+{
+    background: linear-gradient(to bottom, #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%);
+    transition: margin-top 1s, height 1s;
+    -webkit-transition: margin-top 1s, height 1s;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#sidebar:not(.sidebar) .row
+{
+    height: 200px;
+}
+
+#sidebar.sidebar
+{
+    width: 200px;
+    position: fixed;
+    background: white;
+    border-right: 4px ridge #c8d7dc;
+    bottom: 0;
+    top: 0;
+    z-index: 5;
+}
+
+#sidebar.sidebar .row
+{
+    height: 40px;
+}
+
+#sidebar.sidebar .row p
+{
+    display: none;
+}
+
+.withdraw
+{
+    cursor: pointer;
+    float: right;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+}
+
+.withdraw:hover
+{
+    background: #AAA;
+}
+
+.row.solution
+{
+    background: linear-gradient(to bottom, #cdeb8e 0%,#a5c956 100%) !important;
+}
+
+.row.solution h3:before
+{
+    content: "SOLUTION: ";
+}
+
+.details
+{
+    font-size: 13px;
+    font-style: italic;
+}
+
+.page_msg
+{
+    text-align: center;
+    text-shadow: #333 1px 1px 0px;
+    color: #AAA;
+    font-weight: bold;
+    font-size: 25px;
+    margin: 30px;
+}
+
+.page_msg:after
+{
+    content: ":(";
+    font-size: 60px;
+    display: block;
+    font-family: monospace;
 }
